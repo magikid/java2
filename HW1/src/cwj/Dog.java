@@ -1,25 +1,21 @@
-/*
- * 3 data fields
- * 2 constructors
- * 4 methods
- * UML 
- */
+
 package cwj;
 
 /**
- *
- * @author chrisj
+ * 
+ * @author Chris Jones
  */
 public class Dog {
-    private String dogName;
+    private final String dogName;
     private int dogAge;
     private String dogGender;
+    private boolean dogInCrate;
     
     public Dog(String name) {
         dogName = name;
     }
     
-    public Dog(String name, Integer age, String gender){
+    public Dog(String name, int age, String gender){
         dogName = name;
         dogAge = age;
         dogGender = gender;
@@ -33,7 +29,28 @@ public class Dog {
         return dogAge;
     }
     
-    public static void main(String[] args){
-        
+    public String gender(){
+        return dogGender;
+    }
+
+    public String bark() {
+        return "woof woof";
+    }
+
+    public void putInCrate() throws Exception {
+        if(dogInCrate == false){
+            dogInCrate = true;
+        }else{
+            throw new Exception("Dog already in crate.");
+        }
+            
+    }
+
+    public void releaseFromCrate() throws Exception {
+        if(dogInCrate == true){
+            dogInCrate = false;
+        } else {
+            throw new Exception("Dog not in crate.");
+        }
     }
 }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cwj;
 
 import org.junit.After;
@@ -12,11 +8,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author chrisj
- */
 public class DogTest {
+    
+    private Dog genericDog;
     
     public DogTest() {
     }
@@ -31,6 +25,7 @@ public class DogTest {
     
     @Before
     public void setUp() {
+        genericDog = new Dog("Fido", 7, "male");
     }
     
     @After
@@ -38,11 +33,75 @@ public class DogTest {
     }
 
     @Test
-    public void testDog() {
+    public void testDogNameConstructor() {
         Dog myDog = new Dog("Fido");
-        assertEquals("Test create dog with name", myDog.name(), "Fido");
-        Dog ageDog = new Dog("Fido", 16, "male");
-        assertEquals("Test create dog with age too", myDog.age(), 16);
+        assertEquals("Test create dog with name", "Fido", myDog.name());
+    }
+
+    @Test
+    public void testDogOtherConstructor(){
+        Dog secondDog = new Dog("Fido", 16, "male");
+        assertEquals("Test Dog age", 16, secondDog.age());
+        assertEquals("Test dog gender", "male", secondDog.gender());
+    }
+        
+    @Test
+    public void testBarkMethod(){
+        assertEquals("Test barking", "woof woof", genericDog.bark());
+    }
+    
+    @Test
+    public void testPutInCrate(){
+        boolean thrown = false;
+        try{
+            genericDog.putInCrate();
+        } catch (Exception e){
+            thrown = true;
+        }
+        
+        assertFalse(thrown);
+    }
+    
+    @Test
+    public void testDogAlreadyInCrate(){
+        boolean thrown = false;
+        
+        try{
+            genericDog.putInCrate();
+            genericDog.putInCrate();
+        } catch (Exception e){
+            thrown = true;
+        }
+        
+        assertTrue(thrown);
+    }
+    
+    @Test
+    public void testLetOutOfCrate(){
+        boolean thrown = false;
+        
+        try{
+            genericDog.putInCrate();
+            genericDog.releaseFromCrate();
+        } catch (Exception e){
+            thrown = true;
+        }
+        
+        assertFalse(thrown);
+
+    }
+    
+    @Test
+    public void testDogAlreadyOutOfCrate(){
+        boolean thrown = false;
+        
+        try{
+            genericDog.releaseFromCrate();
+        } catch (Exception e){
+            thrown = true;
+        }
+        
+        assertTrue(thrown);
     }
     
 }
