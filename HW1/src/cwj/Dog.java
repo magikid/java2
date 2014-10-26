@@ -6,7 +6,7 @@ package cwj;
  * @author Chris Jones
  */
 public class Dog {
-    private final String dogName;
+    private String dogName;
     private int dogAge;
     private String dogGender;
     private boolean dogInCrate;
@@ -23,6 +23,10 @@ public class Dog {
        
     public String name(){
         return dogName;
+    }
+    
+    public void name(String newname){
+        dogName = newname;
     }
     
     public int age(){
@@ -52,5 +56,13 @@ public class Dog {
         } else {
             throw new Exception("Dog not in crate.");
         }
+    }
+    
+    public String pet(){
+        return "*wags tail*";
+    }
+    
+    public static void main(String[] args){
+        
     }
 }

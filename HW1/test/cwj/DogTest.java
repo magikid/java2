@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 public class DogTest {
     
@@ -35,19 +36,19 @@ public class DogTest {
     @Test
     public void testDogNameConstructor() {
         Dog myDog = new Dog("Fido");
-        assertEquals("Test create dog with name", "Fido", myDog.name());
+        assertThat(myDog.name(), is("Fido"));
     }
 
     @Test
     public void testDogOtherConstructor(){
         Dog secondDog = new Dog("Fido", 16, "male");
-        assertEquals("Test Dog age", 16, secondDog.age());
-        assertEquals("Test dog gender", "male", secondDog.gender());
+        assertThat(secondDog.age(), is(16));
+        assertThat(secondDog.gender(), is("male"));
     }
         
     @Test
     public void testBarkMethod(){
-        assertEquals("Test barking", "woof woof", genericDog.bark());
+        assertThat(genericDog.bark(), is("woof woof"));
     }
     
     @Test
@@ -104,4 +105,14 @@ public class DogTest {
         assertTrue(thrown);
     }
     
+    @Test
+    public void testGiveTreat(){
+        assertThat(genericDog.pet(), is("*wags tail*"));
+    }
+    
+    @Test
+    public void testRenameDog(){
+        genericDog.name("Archer");
+        assertThat(genericDog.name(), is("Archer"));
+    }
 }
