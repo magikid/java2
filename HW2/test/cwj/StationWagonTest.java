@@ -10,17 +10,24 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class StationWagonTest {
 
+    StationWagon genericStationWagon;
+    
     @Before
     public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
+        genericStationWagon = new StationWagon();
     }
 
     @Test
-    public void testSomeMethod() {
-        fail("The test case is a prototype.");
+    public void testStationWagon() {
+        assertThat(genericStationWagon.trunkSize(), is(0));
+        
+        genericStationWagon.trunkSize(450);
+        assertThat(genericStationWagon.trunkSize(), is(450));
+    }
+    
+    @Test
+    public void testInheritence(){
+        assertThat(genericStationWagon.condition(), is("new"));
     }
 
 }

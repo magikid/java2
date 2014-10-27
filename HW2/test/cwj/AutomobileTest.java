@@ -11,14 +11,14 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class AutomobileTest {
     
-    Automobile a;
+    Automobile genericAutomobile;
     
     public AutomobileTest() {
     }
     
     @Before
     public void setUp() {
-        a = new Automobile();
+        genericAutomobile = new Automobile();
     }
     
     @After
@@ -27,47 +27,47 @@ public class AutomobileTest {
 
     @Test
     public void testNewAutomobile() {   
-        assertTrue(a instanceof Automobile);
+        assertTrue(genericAutomobile instanceof Automobile);
     }
     
     @Test
     public void testIsStarted(){
-        assertThat(a.isStarted(), is(false));
+        assertThat(genericAutomobile.isStarted(), is(false));
         
-        a.isStarted(true);
-        assertTrue(a.isStarted());
+        genericAutomobile.isStarted(true);
+        assertTrue(genericAutomobile.isStarted());
     }
     
     @Test
     public void testIsForSale(){
-        assertThat(a.isForSale(), is(false));
+        assertThat(genericAutomobile.isForSale(), is(false));
         
-        a.isForSale(true);
-        assertTrue(a.isForSale());
+        genericAutomobile.isForSale(true);
+        assertTrue(genericAutomobile.isForSale());
     }
     
     @Test
     public void testLicensePlateNumber(){
-        assertThat(a.licensePlateNumber(), is(""));
+        assertThat(genericAutomobile.licensePlateNumber(), is(""));
         
-        a.licensePlateNumber("GDG654");
-        assertThat(a.licensePlateNumber(), is("GDG654"));
+        genericAutomobile.licensePlateNumber("GDG654");
+        assertThat(genericAutomobile.licensePlateNumber(), is("GDG654"));
     }
     
     @Test
     public void testColor(){
-        assertThat(a.color(), is(""));
+        assertThat(genericAutomobile.color(), is(""));
         
-        a.color("blue");
-        assertThat(a.color(), is("blue"));
+        genericAutomobile.color("blue");
+        assertThat(genericAutomobile.color(), is("blue"));
     }
     
     @Test
     public void testCondition(){
-        assertThat(a.condition(), is("new"));
+        assertThat(genericAutomobile.condition(), is("new"));
         
-        a.condition("used");
-        assertThat(a.condition(), is("used"));
+        genericAutomobile.condition("used");
+        assertThat(genericAutomobile.condition(), is("used"));
     }
     
     
