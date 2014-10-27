@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io
 
+### Windows ###
+Thumbs.db
+
 ### NetBeans ###
 nbproject/private/
 build/
