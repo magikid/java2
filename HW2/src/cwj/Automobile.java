@@ -51,4 +51,17 @@ public class Automobile {
     public void condition(String newCondition){
         condition = newCondition;
     }
+    
+    @Override
+    public String toString(){
+        // "Automobile: is started, is not for sale, license plate: GDG654, color: red, condition used"
+        String toReturn = "";
+        toReturn += getClass().getName() + ": ";
+        toReturn += isStarted ? "is started, " : "is not started, ";
+        toReturn += isForSale ? "is for sale, " : "is not for sale, ";
+        toReturn += "license plate: " + licensePlateNumber + ", ";
+        toReturn += "color: " + color + ", ";
+        toReturn += "condition: " + condition;
+        return toReturn;
+    }
 }
