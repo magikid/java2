@@ -52,9 +52,7 @@ public class Automobile {
         condition = newCondition;
     }
     
-    @Override
-    public String toString(){
-        // "Automobile: is started, is not for sale, license plate: GDG654, color: red, condition used"
+    private String getBaseVariablesAsString(){
         String toReturn = "";
         toReturn += getClass().getName() + ": ";
         toReturn += isStarted ? "is started, " : "is not started, ";
@@ -63,5 +61,16 @@ public class Automobile {
         toReturn += "color: " + color + ", ";
         toReturn += "condition: " + condition;
         return toReturn;
+    }
+    
+    @Override
+    public String toString(){
+        return getBaseVariablesAsString();
+    }
+    
+    public String toString(String otherData){
+        String varsWithOtherData = getBaseVariablesAsString();
+        varsWithOtherData += ", " + otherData;
+        return varsWithOtherData;        
     }
 }

@@ -79,5 +79,14 @@ public class AutomobileTest {
         genericAutomobile.licensePlateNumber("GDG654");
         assertThat(genericAutomobile.toString(), is("cwj.Automobile: is started, is not for sale, license plate: GDG654, color: red, condition: used"));
     }
-    
+
+    @Test
+    public void testToStringParam(){
+        genericAutomobile.condition("used");
+        genericAutomobile.color("red");
+        genericAutomobile.isForSale(false);
+        genericAutomobile.isStarted(true);
+        genericAutomobile.licensePlateNumber("GDG654");
+        assertThat(genericAutomobile.toString("other: none"), is("cwj.Automobile: is started, is not for sale, license plate: GDG654, color: red, condition: used, other: none"));
+    }
 }
