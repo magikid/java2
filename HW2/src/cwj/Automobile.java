@@ -5,10 +5,10 @@ public class Automobile {
     protected boolean isStarted, isForSale;
     
     public Automobile(){
-        licensePlateNumber = "";
+        licensePlateNumber = "none";
         isStarted = false; 
         isForSale = false;
-        color = "";
+        color = "invisible";
         condition = "new";
     }
     

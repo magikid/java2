@@ -48,7 +48,7 @@ public class AutomobileTest {
     
     @Test
     public void testLicensePlateNumber(){
-        assertThat(genericAutomobile.licensePlateNumber(), is(""));
+        assertThat(genericAutomobile.licensePlateNumber(), is("none"));
         
         genericAutomobile.licensePlateNumber("GDG654");
         assertThat(genericAutomobile.licensePlateNumber(), is("GDG654"));
@@ -56,7 +56,7 @@ public class AutomobileTest {
     
     @Test
     public void testColor(){
-        assertThat(genericAutomobile.color(), is(""));
+        assertThat(genericAutomobile.color(), is("invisible"));
         
         genericAutomobile.color("blue");
         assertThat(genericAutomobile.color(), is("blue"));
