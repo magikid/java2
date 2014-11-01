@@ -5,6 +5,7 @@ public class StationWagon extends Automobile {
     
     public StationWagon(){
         super();
+        trunkSize = 0;
     }
     
     public int trunkSize(){
