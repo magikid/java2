@@ -16,4 +16,9 @@ public class Hybrid extends Automobile {
     public void mpg(int newMpg){
         mpg = newMpg;
     }
+    
+    @Override
+    public String toString(){
+        return super.toString("mpg: " + mpg);        
+    }
 }
