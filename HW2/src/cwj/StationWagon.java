@@ -15,4 +15,8 @@ public class StationWagon extends Automobile {
     public void trunkSize(int newTrunkSize){
         trunkSize = newTrunkSize;
     }
+    
+    public String toString(){
+        return super.toString("trunk size: " + trunkSize);
+    }
 }

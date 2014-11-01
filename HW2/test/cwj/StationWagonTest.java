@@ -29,5 +29,15 @@ public class StationWagonTest {
     public void testInheritence(){
         assertThat(genericStationWagon.condition(), is("new"));
     }
-
+    
+    @Test
+    public void testToString(){
+        genericStationWagon.condition("used");
+        genericStationWagon.color("red");
+        genericStationWagon.isForSale(false);
+        genericStationWagon.isStarted(true);
+        genericStationWagon.licensePlateNumber("GDG654");
+        genericStationWagon.trunkSize(450);
+        assertThat(genericStationWagon.toString(), is("cwj.StationWagon: is started, is not for sale, license plate: GDG654, color: red, condition: used, trunk size: 450"));
+    }
 }

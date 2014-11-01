@@ -19,6 +19,6 @@ public class Hybrid extends Automobile {
     
     @Override
     public String toString(){
-        return super.toString("mpg: " + mpg);        
+        return super.toString("mpg: " + mpg);      
     }
 }
