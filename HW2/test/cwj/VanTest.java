@@ -30,5 +30,16 @@ public class VanTest {
         genericVan.paintedSides(true);
         assertThat(genericVan.paintedSides(), is(true));
     }
+    
+    @Test
+    public void testToString(){
+        genericVan.condition("used");
+        genericVan.color("red");
+        genericVan.isForSale(false);
+        genericVan.isStarted(true);
+        genericVan.licensePlateNumber("GDG654");
+        genericVan.paintedSides(false);
+        assertThat(genericVan.toString(), is("cwj.Van: is started, is not for sale, license plate: GDG654, color: red, condition: used, does not have painted sides"));
+    }
 
 }
