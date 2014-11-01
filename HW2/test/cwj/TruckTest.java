@@ -29,5 +29,16 @@ public class TruckTest {
         genericTruck.hasBoat(false);
         assertThat(genericTruck.hasBoat(), is(false));
     }
+    
+    @Test
+    public void testToString(){
+        genericTruck.condition("used");
+        genericTruck.color("red");
+        genericTruck.isForSale(false);
+        genericTruck.isStarted(true);
+        genericTruck.licensePlateNumber("GDG654");
+        genericTruck.hasBoat(true);
+        assertThat(genericTruck.toString(), is("cwj.Truck: is started, is not for sale, license plate: GDG654, color: red, condition: used, has a boat"));
+    }
 
 }
