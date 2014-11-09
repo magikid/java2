@@ -10,17 +10,18 @@ cd ..;
 
 cd p1;
 echo "Running p1 tests";
-ant -f p1 -Dnb.internal.action.name=test -Dignore.failing.tests=true -Dnb.wait.for.caches=true test;
+ant -Dnb.internal.action.name=test -Dignore.failing.tests=true -Dnb.wait.for.caches=true test;
 if [ "$?" -ne 0 ]; then errors=3; fi;
 echo "Building p1";
-ant -f p1 -Dnb.internal.action.name=rebuild clean jar;
+ant -Dnb.internal.action.name=rebuild clean jar;
 if [ "$?" -ne 0 ]; then errors=4; fi;
 cd ..;
 
 cd HW2;
 echo "Building HW2";
-ant -f HW2 -Dnb.internal.action.name=rebuild clean jar;
+ant -Dnb.internal.action.name=rebuild clean jar;
 if [ "$?" -ne 0 ]; then errors=5; fi
 cd ..;
 
 exit $errors;
+
