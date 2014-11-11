@@ -23,5 +23,14 @@ ant -Dnb.internal.action.name=rebuild clean jar;
 if [ "$?" -ne 0 ]; then errors=5; fi
 cd ..;
 
+cd HW3;
+echo "Running HW3 tests";
+ant -Dnb.internal.action.name=test -Dignore.failing.tests=true -Dnb.wait.for.caches=true test;
+if [ "$?" -ne 0 ]; then errors=3; fi;
+echo "Building HW3";
+ant -Dnb.internal.action.name=rebuild clean jar;
+if [ "$?" -ne 0 ]; then errors=6; fi
+cd ..;
+
 exit $errors;
 
