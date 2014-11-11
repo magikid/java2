@@ -25,28 +25,32 @@ public class AgeRecongnitionController {
         view.updateActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                String message;
-                
-                model.fName(view.getEnteredFname());
-                model.lName(view.getEnteredLname());
-                model.age(view.getEnteredAge());
-                
-                message = "User Login: " + model.lName() + ", " + model.fName() + "<br>";
-                
-                if (model.age() < 12) {      
-                    message += "Hello child";
-                } else if (model.age() >= 12 && model.age() < 18) {
-                    message += "Hi teen";
-                } else if (model.age() >= 18 && model.age() < 35) {
-                    message += "Welcome young adult";
-                } else if (model.age() >= 35 && model.age() < 65) {
-                    message += "Howdy midlifer";
-                } else if (model.age() >= 65) {
-                    message += "How are you retiree?";
-                }
-                
-                view.provideResponse(message);
+                handleButton();
             }            
         });
+    }
+    
+    private void handleButton(){
+        String message;
+
+        model.fName(view.getEnteredFname());
+        model.lName(view.getEnteredLname());
+        model.age(view.getEnteredAge());
+
+        message = "User Login: " + model.lName() + ", " + model.fName() + "<br>";
+
+        if (model.age() < 12) {      
+            message += "Hello child";
+        } else if (model.age() >= 12 && model.age() < 18) {
+            message += "Hi teen";
+        } else if (model.age() >= 18 && model.age() < 35) {
+            message += "Welcome young adult";
+        } else if (model.age() >= 35 && model.age() < 65) {
+            message += "Howdy midlifer";
+        } else if (model.age() >= 65) {
+            message += "How are you retiree?";
+        }
+
+        view.provideResponse(message);   
     }
 }
