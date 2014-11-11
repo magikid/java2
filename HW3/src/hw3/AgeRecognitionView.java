@@ -5,38 +5,74 @@
  */
 package hw3;
 
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JFrame;
-import java.awt.GridLayout;
-import javax.swing.JButton;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  *
  * @author Chris W Jones <chris@christopherjones.us>
  */
 public class AgeRecognitionView extends JFrame {
+    private final JTextField jtfFirstName = new JTextField();
+    private final JTextField jtfLastName = new JTextField();
+    private final JTextField jtfAge = new JTextField();
+    private final JButton jbtOk = new JButton("Submit");
+    private final JLabel jblResponse = new JLabel("<html><br><br></html>");
     
-    public AgeRecognitionView(){
-        setLayout(new GridLayout(3,2,5,5));
+    public AgeRecognitionView(String applicationTitle){
         
-        add(new JLabel("First Name"));
-        add(new JTextField());
-        add(new JLabel("Last name"));
-        add(new JTextField());
-        add(new JLabel("Age"));
-        add(new JTextField());
-        add(new JButton("Ok"));
+        JPanel inputPanel = new JPanel();
+        JLabel jlbFname = new JLabel("First Name");
+        jlbFname.setLabelFor(jtfFirstName);
+        JLabel jlbLname = new JLabel("Last Name");
+        jlbLname.setLabelFor(jtfLastName);
+        JLabel jlbAge = new JLabel("Age");
+        jlbAge.setLabelFor(jtfAge);
+        jbtOk.setDefaultCapable(true);
         
+        inputPanel.setLayout(new GridLayout(0,2,5,5));
+        
+        inputPanel.add(jlbFname);
+        inputPanel.add(jtfFirstName);
+        inputPanel.add(jlbLname);
+        inputPanel.add(jtfLastName);
+        inputPanel.add(jlbAge);
+        inputPanel.add(jtfAge);
+        
+        
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(jbtOk, BorderLayout.SOUTH);
+        mainPanel.add(jblResponse, BorderLayout.CENTER);
+        mainPanel.add(inputPanel, BorderLayout.NORTH);
+        
+        add(mainPanel, BorderLayout.CENTER);
+        getRootPane().setDefaultButton(jbtOk);
+        setTitle(applicationTitle);
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
     
-    public void createForm(AgeRecognition ar){
-        AgeRecognitionView frame = new AgeRecognitionView();
-        
-        frame.setTitle("HW3: Age Recognition");
-        frame.setSize(200, 125);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+    public void updateActionListener(ActionListener al){
+        jbtOk.addActionListener(al);
     }
+    
+    public void provideResponse(String response){
+        jblResponse.setText("<html>" + response + "</html>");
+    }
+    
+    public String getEnteredFname(){
+        return jtfFirstName.getText();
+    }
+
+    public String getEnteredLname(){
+        return jtfLastName.getText();
+    } 
+    
+    public int getEnteredAge(){
+        return Integer.parseInt(jtfAge.getText());
+    } 
 }
+

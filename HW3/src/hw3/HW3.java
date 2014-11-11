@@ -16,6 +16,16 @@ public class HW3 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+              //fetch student record based on his roll no from the database
+      AgeRecognition model  = new AgeRecognition();
+
+      //Create a view : to write student details on console
+      AgeRecognitionView view = new AgeRecognitionView("HW3: Age Recognition");
+
+      AgeRecongnitionController controller = new AgeRecongnitionController(model, view);
+
+      controller.go();
+      
     }
     
 }
