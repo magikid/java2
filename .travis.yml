@@ -10,3 +10,4 @@ script: ./run-tests.sh
 
 notifications:
   webhooks: https://api.kato.im/rooms/593ea797c46dabf296886e08bd4cd45d2df4d62e67b50fdac66b36cdce984fb/travis
+  slack: hilandchris:iPT6Z19oogwUy0TuW3bJ4cee
