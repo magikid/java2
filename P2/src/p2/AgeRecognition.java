@@ -1,18 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package hw3;
+
+package p2;
 
 /**
  *
  * @author Chris W Jones <chris@christopherjones.us>
+ * 
  */
 public class AgeRecognition {
     private String fName;
     private String lName;
     private int age;
+    private String stateOfBirth;
+    private boolean gender;
     
     public String fName(){
         return fName;
@@ -36,5 +35,21 @@ public class AgeRecognition {
     
     public void age(int newAge){
         age = newAge;
+    }
+
+    public void gender(boolean b) {
+        gender = b;
+    }
+
+    public boolean gender() {
+        return gender;
+    }
+
+    public void stateOfBirth(String in) {
+        stateOfBirth = in;
+    }
+
+    public String stateOfBirth() {
+        return stateOfBirth;
     }
 }

@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package hw3;
+package p2;
 
+import p2.AgeRecognition;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -67,5 +68,19 @@ public class AgeRecognitionTest {
         instance.age(newAge);
         assertEquals(44, instance.age());
     }
-
+    
+    @Test
+    public void testGender() {
+        
+        assertFalse(instance.gender());
+        instance.gender(true);
+        assertTrue(instance.gender());
+    }
+    
+    @Test
+    public void testStateOfBirth(){
+        assertEquals(null, instance.stateOfBirth());
+        instance.stateOfBirth("IN");
+        assertEquals("IN", instance.stateOfBirth());
+    }
 }
