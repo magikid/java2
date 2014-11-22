@@ -13,39 +13,76 @@ public class AgeRecognitionView extends JFrame {
     private final JTextField jtfFirstName = new JTextField();
     private final JTextField jtfLastName = new JTextField();
     private final JTextField jtfAge = new JTextField();
+    private final JTextArea jtaResults = new JTextArea();
+    private final JRadioButton jrdGenderMale = new JRadioButton("Male");
+    private final JRadioButton jrdGenderFemale = new JRadioButton("Female");
     private final JButton jbtOk = new JButton("Submit");
-    private final JLabel jblResponse = new JLabel("<html><br><br></html>");
-    
+    private final JComboBox jcbStates = new JComboBox(new String[]{
+        "AK", "AL", "AR", "AZ", "CA",
+        "CO", "CT", "DC", "DE", "FL",
+        "GA", "HI", "IA", "ID", "IL", 
+        "IN", "KS", "KY", "LA", "MA", 
+        "MD", "ME", "MI", "MN", "MO", 
+        "MS", "MT", "NC", "ND", "NE", 
+        "NH", "NJ", "NM", "NV", "NY", 
+        "OH", "OK", "OR", "PA", "RI", 
+        "SC", "SD", "TN", "TX", "UT", 
+        "VA", "VT", "WA", "WI", "WV", 
+        "WY"
+    });
     public AgeRecognitionView(String applicationTitle){
         
-        JPanel inputPanel = new JPanel();
+       /*
+        * I've decided to split up the different inputs into two different 
+        * panels based on which week they were required for.
+        */
+        
+        // Inputs from HW3
+        JPanel hw3InputPanel = new JPanel();
+        hw3InputPanel.setLayout(new GridLayout(0,2,5,5));
         JLabel jlbFname = new JLabel("First Name");
-        jlbFname.setLabelFor(jtfFirstName);
         JLabel jlbLname = new JLabel("Last Name");
-        jlbLname.setLabelFor(jtfLastName);
         JLabel jlbAge = new JLabel("Age");
-        jlbAge.setLabelFor(jtfAge);
+        jlbFname.setLabelFor(jtfFirstName);       
+        jlbLname.setLabelFor(jtfLastName);
+        jlbAge.setLabelFor(jtfAge);        
         jbtOk.setDefaultCapable(true);
+
+        hw3InputPanel.add(jlbFname);
+        hw3InputPanel.add(jtfFirstName);
+        hw3InputPanel.add(jlbLname);
+        hw3InputPanel.add(jtfLastName);
+        hw3InputPanel.add(jlbAge);
+        hw3InputPanel.add(jtfAge);
         
-        inputPanel.setLayout(new GridLayout(0,2,5,5));
+        // Inputs for P2
+        JPanel p2InputPanel = new JPanel();
+        p2InputPanel.setLayout(new GridLayout(2,2));
+        ButtonGroup group = new ButtonGroup();  // Seems like a good idea to group the radio buttons
+        JLabel jlbStateOfBirth = new JLabel("State of Birth");
+        jlbStateOfBirth.setLabelFor(jcbStates);
+        group.add(jrdGenderFemale);
+        group.add(jrdGenderMale);
+        jrdGenderMale.setSelected(true);
+        jtaResults.setEditable(false);
         
-        inputPanel.add(jlbFname);
-        inputPanel.add(jtfFirstName);
-        inputPanel.add(jlbLname);
-        inputPanel.add(jtfLastName);
-        inputPanel.add(jlbAge);
-        inputPanel.add(jtfAge);
+        p2InputPanel.add(jrdGenderFemale);
+        p2InputPanel.add(jrdGenderMale);
+        p2InputPanel.add(jlbStateOfBirth);
+        p2InputPanel.add(jcbStates);
         
         
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.add(jbtOk, BorderLayout.SOUTH);
-        mainPanel.add(jblResponse, BorderLayout.CENTER);
-        mainPanel.add(inputPanel, BorderLayout.NORTH);
+        // Overall panel for window
+        JPanel mainPanel = new JPanel(new GridLayout(4,1));
+        mainPanel.add(hw3InputPanel);
+        mainPanel.add(p2InputPanel);
+        mainPanel.add(jtaResults);        
+        mainPanel.add(jbtOk);
         
         add(mainPanel, BorderLayout.CENTER);
         getRootPane().setDefaultButton(jbtOk);
         setTitle(applicationTitle);
-        setSize(300, 200);
+        setSize(300, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -56,7 +93,7 @@ public class AgeRecognitionView extends JFrame {
     }
     
     public void provideResponse(String response){
-        jblResponse.setText("<html>" + response + "</html>");
+        jtaResults.setText(response);
     }
     
     public String getEnteredFname(){
@@ -70,5 +107,16 @@ public class AgeRecognitionView extends JFrame {
     public int getEnteredAge(){
         return Integer.parseInt(jtfAge.getText());
     } 
+    
+    public boolean getEnteredGender(){
+        if (jrdGenderFemale.isSelected()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public String getStateOfBirth(){
+        return (String) jcbStates.getSelectedItem();
+    }
 }
-
