@@ -36,19 +36,29 @@ public class AgeRecongnitionController {
         model.fName(view.getEnteredFname());
         model.lName(view.getEnteredLname());
         model.age(view.getEnteredAge());
+        model.gender(view.getEnteredGender());
+        model.stateOfBirth(view.getStateOfBirth());
+        
+        /* 
+         * Since the gender is stored as a boolean, this translates it to
+         * something a little easier to read.  If model.gender() is true
+         * that means male, otherwise, female.
+         */
+        String humanFriendlyGender = model.gender() ? "Male" : "Female";
 
-        message = "User Login: " + model.lName() + ", " + model.fName() + "<br>";
-
+        message = "User Login: " + model.lName() + ", " + model.fName() + "\n";
+        message += "Gender: " + humanFriendlyGender + "\n";
+        message += "State of Birth: " + model.stateOfBirth() + "\n";        
         if (model.age() < 12) {      
-            message += "Hello child";
+            message += "Hello child\n";
         } else if (model.age() >= 12 && model.age() < 18) {
-            message += "Hi teen";
+            message += "Hi teen\n";
         } else if (model.age() >= 18 && model.age() < 35) {
-            message += "Welcome young adult";
+            message += "Welcome young adult\n";
         } else if (model.age() >= 35 && model.age() < 65) {
-            message += "Howdy midlifer";
+            message += "Howdy midlifer\n";
         } else if (model.age() >= 65) {
-            message += "How are you retiree?";
+            message += "How are you retiree?\n";
         }
 
         view.provideResponse(message);   
