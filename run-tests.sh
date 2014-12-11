@@ -47,5 +47,14 @@ ant -Dnb.internal.action.name=rebuild clean jar;
 if [ "$?" -ne 0 ]; then errors=10; fi
 cd ..;
 
+cd FinalProject;
+echo "Running Final Project tests";
+ant -Dnb.internal.action.name=test -Dignore.failing.tests=true -Dnb.wait.for.caches=true test;
+if [ "$?" -ne 0 ]; then errors=11; fi;
+echo "Building Final Project";
+ant -Dnb.internal.action.name=rebuild clean jar;
+if [ "$?" -ne 0 ]; then errors=12; fi
+cd ..;
+
 exit $errors;
 
