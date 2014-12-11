@@ -3,15 +3,37 @@ package finalproject;
 import java.util.*;
 
 public class CustomColor {
-    private Map<String, String> colors = new HashMap<String, String>();
+    private String colorName;
+    private String colorHex;
     
-    public CustomColor(HashMap<String, String> defaultHm){
-        colors.putAll(defaultHm);
+    public CustomColor(String firstColor, String firstHex){
+        colorName = firstColor;
+        colorHex = firstHex;
+    }
+    
+    public CustomColor(){
+        colorName = new String();
+        colorHex = new String();
     }    
     
     public void assign(String newColor, String newHex){
-        if(!colors.containsValue(newHex)){
-            colors.put(newColor, newHex);
-        }
+        colorName = newColor;
+        colorHex = newHex;
     }
+    
+    public String name(){
+        return colorName;
+    }
+    
+    public String hex(){
+        return colorHex;
+    }
+    
+    public void name(String newColorName){
+        colorName = newColorName;
+    }
+    
+    public void hex(String newColorHex){
+        colorHex = newColorHex;
+    }    
 }
