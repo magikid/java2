@@ -39,7 +39,8 @@ public class CustomColorTest {
         String newHex = "";
         CustomColor instance = new CustomColor();
         instance.assign(newColor, newHex);
-        fail("The test case is a prototype.");
+        assertEquals(instance.name(), newColor );
+        assertEquals(instance.hex(), newHex );
     }
 
     @Test
@@ -49,7 +50,6 @@ public class CustomColorTest {
         String expResult = "";
         String result = instance.name();
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     @Test
@@ -59,7 +59,6 @@ public class CustomColorTest {
         String expResult = "";
         String result = instance.hex();
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     @Test
@@ -68,7 +67,7 @@ public class CustomColorTest {
         String newColorName = "";
         CustomColor instance = new CustomColor();
         instance.name(newColorName);
-        fail("The test case is a prototype.");
+        assertEquals(newColorName, instance.name());
     }
 
     @Test
@@ -77,7 +76,7 @@ public class CustomColorTest {
         String newColorHex = "";
         CustomColor instance = new CustomColor();
         instance.hex(newColorHex);
-        fail("The test case is a prototype.");
+        assertEquals(newColorHex, instance.hex());
     }
 
 }
