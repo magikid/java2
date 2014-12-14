@@ -4,12 +4,13 @@ import java.util.*;
 
 public class UserColors {
     
+    // Gotta love generics
     private Map<String,String> colorMap;
     
     public UserColors(){
         colorMap = new HashMap<String,String>();
         
-        //Set some defaults
+        // Add some defaults since there is a 5 color minimum
         this.addColor("White", "FFFFFF");
         this.addColor("Blue", "0000FF");
         this.addColor("Green", "00FF00");
@@ -26,13 +27,15 @@ public class UserColors {
     }
     
     public String getName(String hex){
+        String results = "";
+        
         for(String key: colorMap.keySet()){
             if(colorMap.get(key).equals(hex)){
-                return key;
+                results = key;
             }
         }
         
-        return "";
+        return results;
     }
     
     public String[] all(){
@@ -56,6 +59,7 @@ public class UserColors {
     }
     
     public int length(){
+        // I miss this ruby method
         return colorMap.size();
     }
             
