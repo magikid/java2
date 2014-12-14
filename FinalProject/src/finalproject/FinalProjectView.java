@@ -87,7 +87,7 @@ public class FinalProjectView extends JFrame{
         return jtfHexCode.getText();
     }    
 
-    public void generateRadioButtons() {
+    public void generateColorLabels() {
         radioButtonColors.removeAll();
         radioButtonColors.setLayout(new GridLayout(colorMap.length(), 1));
         
@@ -102,6 +102,6 @@ public class FinalProjectView extends JFrame{
     
     public void setColorMap(UserColors givenColorMap){
         colorMap = givenColorMap;
-        generateRadioButtons();
+        generateColorLabels();
     }
 }

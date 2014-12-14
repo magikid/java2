@@ -8,9 +8,9 @@ public class FinalProjectController {
     private final UserColors colorMap;
     private String errorMessages;
     
-    public FinalProjectController(FinalProjectView newView){
+    public FinalProjectController(FinalProjectView newView, UserColors providedMap){
         view = newView;
-        colorMap = new UserColors();
+        colorMap = providedMap;
         view.setColorMap(colorMap);
     }
     
@@ -25,7 +25,7 @@ public class FinalProjectController {
     private void handleButton(){
         if(!errors()){
             colorMap.addColor(view.getEnteredColorName(), view.getEnteredColorHex());
-            view.generateRadioButtons();
+            view.generateColorLabels();
         }else{
             JOptionPane.showMessageDialog(null, errorMessages, "Error in form", JOptionPane.ERROR_MESSAGE);
         }
