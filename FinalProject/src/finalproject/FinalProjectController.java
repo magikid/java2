@@ -15,7 +15,7 @@ public class FinalProjectController {
     }
     
     public void go(){
-        String instructions = "Add new colors using the form at the top.\n\nChange the colors by clicking a color on the left.";
+        String instructions = "Add new colors using the form at the top.\n\nChange the color displayed by clicking a color on the left.";
         JOptionPane.showMessageDialog(null, instructions, "Instructions", JOptionPane.INFORMATION_MESSAGE);
         view.updateButtonActionListener((ActionEvent e) -> {
             handleButton();      
