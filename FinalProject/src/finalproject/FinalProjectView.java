@@ -9,7 +9,7 @@ public class FinalProjectView extends JFrame{
     private final JTextField jtfHexCode = new JTextField();
     private final JButton jbtOk = new JButton("Submit");
     private final JPanel coloredPanel = new JPanel();
-    private final JPanel radioButtonColors = new JPanel();
+    private final JPanel colorLabelsPanel = new JPanel();
     private UserColors colorMap;
     private MouseListener ml;
     
@@ -33,7 +33,7 @@ public class FinalProjectView extends JFrame{
         
         //Add all the panels and set some defaults
         add(addNewColorPanel, BorderLayout.NORTH);
-        add(radioButtonColors, BorderLayout.WEST);
+        add(colorLabelsPanel, BorderLayout.WEST);
         add(coloredPanel, BorderLayout.CENTER);
         getRootPane().setDefaultButton(jbtOk);
         setTitle(applicationTitle);
@@ -41,7 +41,9 @@ public class FinalProjectView extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true); 
-
+        
+        // This is to catch when the user clicks on a label and update the
+        // color of the panel to the color.
         ml = new MouseListener() {
 
                 @Override
@@ -76,7 +78,7 @@ public class FinalProjectView extends JFrame{
     }
     
     public void updateMouseActionListener(MouseListener ml){
-        radioButtonColors.addMouseListener(ml);
+        colorLabelsPanel.addMouseListener(ml);
     }
     
     public String getEnteredColorName(){
@@ -88,15 +90,17 @@ public class FinalProjectView extends JFrame{
     }    
 
     public void generateColorLabels() {
-        radioButtonColors.removeAll();
-        radioButtonColors.setLayout(new GridLayout(colorMap.length(), 1));
+        colorLabelsPanel.removeAll();
+        colorLabelsPanel.setLayout(new GridLayout(colorMap.length(), 1));
         
         for(String colorNameAndHash: colorMap.all()){
             JLabel nextLabel = new JLabel(colorNameAndHash);
             nextLabel.addMouseListener(ml);
-            radioButtonColors.add(nextLabel);
+            colorLabelsPanel.add(nextLabel);
         }
         
+        // Without this statement, the new panel and labels
+        // weren't showing up.  Doing a this.pack() also fixes it.
         this.revalidate();
     }
     
